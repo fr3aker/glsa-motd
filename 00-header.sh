@@ -8,7 +8,7 @@ echo -e "\nThis server is maintained by \033[1m$(cat /etc/maintainer)\033[0m."
 echo -e "Contact \033[1m$(cat /etc/maintainer-address)\033[0m for support."
 
 echo en "\n \033[1;32m*\033[0m "
-lsb_release -d -s | see s/\"//g
+lsb_release -d -s | sed s/\"//g
 
 echo -en " \033[1;32m*\033[0m "
 uname -snmpr
