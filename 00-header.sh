@@ -23,3 +23,7 @@ then echo -en " \033[1;33m*\033[0m"
 else echo -en " \033[1;32m*\033[0m"
 fi
 uptime
+
+echo -en " \033[1;32m*\033[0m Network Interfaces: \033[1m"
+ifconfig | grep 'inet addr' | cut -d ':' -f 2 | cut -d ' ' -f 1 | grep -v 127.0.0.1 | tr '\n' ' '
+echo -e "\033[0m"
