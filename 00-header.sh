@@ -24,6 +24,10 @@ else echo -en " \033[1;32m*\033[0m"
 fi
 uptime
 
-echo -en " \033[1;32m*\033[0m Network Interfaces: \033[1m"
-ifconfig | grep 'inet addr' | cut -d ':' -f 2 | cut -d ' ' -f 1 | grep -v 127.0.0.1 | tr '\n' ' '
+echo -en " \033[1;32m*\033[0m IPv4 Network Interfaces: \033[1m"
+ifconfig | grep 'inet ' | cut -d ' ' -f 10 | tr '\n' ' '
+echo -e "\033[0m"
+
+echo -en " \033[1;32m*\033[0m IPv6 Network Interfaces: \033[1m"
+ifconfig | grep 'inet6 ' | cut -d ' ' -f 10 | tr '\n' ' '
 echo -e "\033[0m"
