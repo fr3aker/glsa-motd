@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Place in /etc/motd.d and drop the .sh suffix.
+
+if [ ! -e /var/cache/motd-glsa ] ; then
+	umask 0377
+	/usr/local/sbin/check-updates > /var/cache/motd-glsa
+fi
+     
+cat /var/cache/motd-glsa

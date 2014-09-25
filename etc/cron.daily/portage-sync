@@ -1,0 +1,2 @@
+emerge --sync --quiet
+glsa-check -vcqm affected

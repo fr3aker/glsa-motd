@@ -1,0 +1,3 @@
+if [ "${EBUILD_PHASE}" == "postinst" ] || [ "${EBUILD_PHASE}" == "postrm" ];then
+	/etc/portage/postsync.d/motd-update
+fi

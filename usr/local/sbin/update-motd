@@ -3,15 +3,23 @@
 # Place in /usr/local/sbin and drop the .sh suffix.
 # Configure this to run between once every minute and once every five.
 
+umask 0133
+
 cd /etc/motd.d
 
 rm -f /tmp/motd-tmp
-touch /mtp/motd-tmp
+
+# exit on lost malicious race
+set +e
+set -o noclobber
+echo -n > /tmp/motd-tmp
+set +o noclobber
+set -e
 
 for SCRIPT in $(ls); do
-    test -x ${SCRIPT} || continue
+    test -x "${SCRIPT}" || continue
     
-    ./${SCRIPT} >> /tmp/motd-tmp
+    ./"${SCRIPT}" >> /tmp/motd-tmp
 done
 
 echo >> /tmp/motd-tmp
