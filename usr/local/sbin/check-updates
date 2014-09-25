@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Place in /usr/local/sbin and drop the .sh suffix.
+[ $(printf "%0.f" $(cat /proc/loadavg | awk '{print $1}')) -gt 2 ] && exit
 
 SYS=$(emerge -uDNpq system | grep ebuild | wc -l)
 WRL=$(emerge -uDNpq world | grep ebuild | wc -l)
